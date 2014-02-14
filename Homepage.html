@@ -1,0 +1,112 @@
+<div data-role="page" id="page1">
+    <div data-role="header">
+         <h1> Mashup </h1>
+
+    </div>
+    <div data-role="content">
+        <p><a href="#Finance" data-role="button"> Finance </a>
+
+        </p>
+        <p><a href="#CurrencyTable" data-role="button"> Currency Chart </a>
+
+        </p>
+        <p><a href="#TodoList" data-role="button"> To-do List </a>
+
+        </p>
+        <p><a href="#PopulationMap" data-role="button"> Population Map </a>
+
+        </p>
+    </div>
+</div>
+<div data-role="page" id="Finance">
+    <div data-role="header"> <a data-rel="back" data-icon="home">Home</a>
+
+         <h1> ***Finance*** </h1>
+
+    </div>
+    <div data-role="content">
+         <h1>Top Finance Stories</h1>
+
+        <div id="rss-default" class="well" style="display:none;"></div>
+    </div>
+</div>
+<div data-role="page" id="TodoList" class="list">
+    <div data-role="header"> <a data-rel="back" data-icon="home">Home</a>
+
+         <h1> ***To-do List*** </h1>
+
+    </div>
+    <div data-role="content">
+         <h1>My Todo list</h1>
+
+        <ul id="todo" contenteditable="true">
+            <li>Follow the rules ++</li>
+            <li>Begin working</li>
+            <li>Stop facebook now !</li>
+            <li>Complete Assignment</li>
+            <li>Buy Kiwis --</li>
+        </ul>
+        <p>
+            <button id="reset">Reinitialize</button>
+        </p>
+        <div class="info">
+            <p><strong>Usage :</strong>
+
+            </p>
+            <ul>
+                <li>Click on list items to change their content. It will be saved on your computer</li>
+                <li>Add string "++" to give emphasis, or "--" to mark as done. Refresh. Enjoy</li>
+                <li>Add or remove any list item you want</li>
+                <li>Hit Shift+Enter to break line without creating a new list item</li>
+                <li>On modern browsers understanding flexible box model, the items will automatically be sorted by importance</li>
+                <li>Shut down your browser, open this page again... your datas are still there&nbsp;!</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div data-role="page" id="CurrencyTable">
+    <div data-role="header"> <a data-rel="back" data-icon="home">Home</a>
+
+         <h1> ***Currency Table*** </h1>
+
+    </div>
+    <div data-role="content">
+        <p>Currency compared with US dollars
+            <p>
+                <div id="table_div"></div>
+    </div>
+</div>
+<div data-role="page" id="PopulationMap">
+    <div data-role="header"> <a data-rel="back" data-icon="home">Home</a>
+
+         <h1> ***World Map with Popularity*** </h1>
+
+    </div>
+    <div data-role="content">
+        <p>Map showing Population</p>
+        <div id="visualization" style="width: 900px; height: 500px;"></div>
+        <script>
+            function drawVisualization(e) {
+                var data = google.visualization.arrayToDataTable([
+                    ['Country', 'Popularity'],
+                    ['Germany', 200],
+                    ['United States', 300],
+                    ['Brazil', 400],
+                    ['Canada', 500],
+                    ['France', 600],
+                    ['RU', 700]
+                ]);
+
+                var geomap = new google.visualization.GeoMap(
+                document.getElementById('visualization'));
+                geomap.draw(data, null);
+            }
+
+
+            google.load('visualization', '1', {
+                packages: ['geomap']
+            });
+            google.setOnLoadCallback(drawVisualization);
+        </script>
+    </div>
+</div>
