@@ -76,6 +76,27 @@ $("#CurrencyTable").on("pageshow", function (e) {
     });
 });
 
-//$("#PopulationMap").on("pageshow", function (e) {
+$("#RESTWebService").on("pageshow", function (e) {
+    var echo = function (dataPass) {
+        $.ajax({
+            type: "POST",
+            url: "/echo/json/",
+            data: dataPass,
+            cache: false,
+            success: function (json) {
+                alert(json);
+            }
+        });
+    };
+    $("#list").on("click", function (e) {
 
-//});
+        $.get("http://localhost/aspnet_client/WcfService1/WcfService1/Service1.svc/newFun", function (data) {
+            var json = {
+                json: JSON.stringify(data),
+                delay: 1
+            };
+            echo(json);
+        });
+    });
+
+});
